@@ -1,9 +1,11 @@
 package com.lucaslearning.dslearnbds.entities;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import com.lucaslearning.dslearnbds.entities.pk.EnrollmentPK;
@@ -17,7 +19,9 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_enrollment")
-public class Enrollment {
+public class Enrollment implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
 	private EnrollmentPK id = new EnrollmentPK();
@@ -102,4 +106,21 @@ public class Enrollment {
 		return deliveries;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Enrollment other = (Enrollment) obj;
+		return Objects.equals(id, other.id);
+	}
+	
 }
