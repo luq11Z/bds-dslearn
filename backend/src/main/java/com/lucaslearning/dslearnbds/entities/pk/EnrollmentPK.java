@@ -3,12 +3,12 @@ package com.lucaslearning.dslearnbds.entities.pk;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import com.lucaslearning.dslearnbds.entities.Offer;
 import com.lucaslearning.dslearnbds.entities.User;
-
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 
 @Embeddable
 public class EnrollmentPK implements Serializable {
