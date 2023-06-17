@@ -137,6 +137,10 @@ public class User implements UserDetails, Serializable {
 	public int hashCode() {
 		return Objects.hash(id);
 	}
+	
+	public boolean hasRole(String roleName) {
+		return roles.stream().anyMatch(x -> x.getAuthority().equals(roleName));
+	}
 
 	@Override
 	public boolean equals(Object obj) {
